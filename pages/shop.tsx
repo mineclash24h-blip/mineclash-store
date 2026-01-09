@@ -13,9 +13,11 @@ export default function Shop(){
     fetch('/api/products')
       .then(r=>r.json())
       .then((data:any) => {
+        console.log('Products loaded:', data)
         setRanks(data.ranks || [])
         setCoins(data.coins || [])
       })
+      .catch(e => console.error('Error loading products:', e))
   },[])
   const categories = ['all', 'ranks', 'coins']
   const filteredRanks = useMemo(()=>{

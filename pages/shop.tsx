@@ -37,36 +37,36 @@ export default function Shop(){
   },[coins, query, sort])
 
   return (
-    <main>
+    <main className="px-3 py-4">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-3">
-        <h2 className="text-2xl font-bold">Shop</h2>
-        <div className="flex items-center gap-3">
-          <input placeholder="Search products..." value={query} onChange={(e)=>setQuery(e.target.value)} className="border rounded px-3 py-1" />
-          <select value={category} onChange={(e)=>setCategory(e.target.value)} className="border rounded px-2 py-1">
+        <h2 className="text-2xl md:text-3xl font-bold">Shop</h2>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+          <input placeholder="Search..." value={query} onChange={(e)=>setQuery(e.target.value)} className="border rounded px-3 py-2 text-sm w-full sm:w-auto" />
+          <select value={category} onChange={(e)=>setCategory(e.target.value)} className="border rounded px-2 py-2 text-sm">
             {categories.map(c=> <option key={c} value={c}>{c}</option>)}
           </select>
-          <select value={sort} onChange={(e)=>setSort(e.target.value)} className="border rounded px-2 py-1">
+          <select value={sort} onChange={(e)=>setSort(e.target.value)} className="border rounded px-2 py-2 text-sm">
             <option value="featured">Featured</option>
-            <option value="price_asc">Price: Low → High</option>
-            <option value="price_desc">Price: High → Low</option>
+            <option value="price_asc">Low → High</option>
+            <option value="price_desc">High → Low</option>
           </select>
-          <select value={currency} onChange={(e)=>setCurrency(e.target.value)} className="border rounded px-2 py-1 bg-yellow-100">
-            <option value="USD">USD ($)</option>
-            <option value="INR">INR (₹)</option>
+          <select value={currency} onChange={(e)=>setCurrency(e.target.value)} className="border rounded px-2 py-2 text-sm bg-yellow-100 font-semibold">
+            <option value="USD">USD</option>
+            <option value="INR">INR</option>
           </select>
         </div>
       </div>
 
       <section>
-        <h3 className="text-2xl font-semibold mb-4">Ranks</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        <h3 className="text-xl md:text-2xl font-semibold mb-4">Ranks</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
           {filteredRanks.map(p=> <ProductCard key={p.id} product={p} currency={currency} />)}
         </div>
 
-        <hr className="my-8" />
+        <hr className="my-6" />
 
-        <h3 className="text-2xl font-semibold mb-4">Coins</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <h3 className="text-xl md:text-2xl font-semibold mb-4">Coins</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-8">
           {filteredCoins.map(p=> <ProductCard key={p.id} product={p} currency={currency} />)}
         </div>
       </section>

@@ -3,10 +3,22 @@ import Logo from './Logo'
 import CartIcon from './CartIcon'
 import { useCart } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
+import { useEffect, useState } from 'react'
 
 export default function Header(){
   const { currency, setCurrency } = useCurrency()
   const { count } = useCart()
+  const [deploymentTime, setDeploymentTime] = useState('')
+
+  useEffect(() => {
+    fetch('/version.json')
+      .then(r => r.json())
+      .then(data => {
+        const time = new Date(data.timestamp).toLocaleString()
+        setDeploymentTime(time)
+      })
+      .catch(() => setDeploymentTime('Loading...'))
+  }, [])
 
   return (
     <header className="hero-banner">
@@ -22,6 +34,9 @@ export default function Header(){
             <option value="USD">USD ($)</option>
             <option value="INR">INR (₹)</option>
           </select>
+          <span className="text-xs text-blue-100" title={`Last updated: ${deploymentTime}`}>
+            {deploymentTime ? `Updated: ${deploymentTime.split(',')[0]}` : ''}
+          </span>
         </nav>
       </div>
 

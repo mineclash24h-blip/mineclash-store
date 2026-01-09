@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
 
@@ -27,8 +28,12 @@ export default function ProductCard({product, currency='USD'}:{product:any, curr
   return (
     <>
       <article className={`${cardClass} rounded-xl shadow-lg p-4 flex flex-col hover:shadow-2xl transition-shadow`}>
-        <div className="product-image h-44 rounded mb-4 overflow-hidden flex items-center justify-center">
-          <img src={product.image || '/images/product-placeholder.svg'} alt={`${product.name} image`} className="w-full h-full object-cover" />
+        <div className="product-image h-44 rounded mb-4 overflow-hidden flex items-center justify-center bg-gray-200">
+          {product.image ? (
+            <img src={product.image + '?v=' + Date.now()} alt={`${product.name} image`} className="w-full h-full object-cover" onError={(e) => {e.currentTarget.src = '/images/product-placeholder.svg'}} />
+          ) : (
+            <img src="/images/product-placeholder.svg" alt={`${product.name} image`} className="w-full h-full object-cover" />
+          )}
         </div>
         <h3 className="font-semibold text-lg">{product.name}</h3>
 

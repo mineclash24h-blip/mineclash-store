@@ -1,13 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="g4" x1="0" x2="1">
-      <stop offset="0" stop-color="#e6d7f5"/>
-      <stop offset="1" stop-color="#c9a8e6"/>
-    </linearGradient>
-    <filter id="f4" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.28"/>
-    </filter>
+    <style>
+      .purple { fill: #d8a8ff; }
+      .dark-purple { fill: #a876d8; }
+      .darker-purple { fill: #6b4d96; }
+      .black { fill: #1a1a1a; }
+    </style>
   </defs>
-  <rect width="100%" height="100%" rx="48" fill="url(#g4)" filter="url(#f4)"/>
-  <text x="50%" y="50%" font-family="Inter, Arial, sans-serif" font-size="56" fill="#333" text-anchor="middle" dominant-baseline="central">MONARCH</text>
+  <!-- Shield outline -->
+  <rect x="80" y="60" width="352" height="400" rx="20" class="black"/>
+  <rect x="90" y="70" width="332" height="380" rx="15" class="dark-purple"/>
+  <rect x="100" y="80" width="312" height="360" rx="10" class="purple"/>
+  
+  <!-- Gem pattern -->
+  <g class="darker-purple">
+    <polygon points="256,120 290,180 256,220 222,180"/>
+    <polygon points="256,280 290,340 256,380 222,340"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="256" y="460" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#1a1a1a" text-anchor="middle">MONARCH</text>
 </svg>

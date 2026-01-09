@@ -1,13 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="g1" x1="0" x2="1">
-      <stop offset="0" stop-color="#ffff00"/>
-      <stop offset="1" stop-color="#e6e600"/>
-    </linearGradient>
-    <filter id="f1" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3"/>
-    </filter>
+    <style>
+      .gold { fill: #ffff00; }
+      .dark-gold { fill: #d4af37; }
+      .darker { fill: #8b8b00; }
+      .black { fill: #1a1a1a; }
+    </style>
   </defs>
-  <rect width="100%" height="100%" rx="48" fill="url(#g1)" filter="url(#f1)"/>
-  <text x="50%" y="50%" font-family="Inter, Arial, sans-serif" font-size="72" fill="#333" text-anchor="middle" dominant-baseline="central">CRASH</text>
+  <!-- Shield outline -->
+  <rect x="80" y="60" width="352" height="400" rx="20" class="black"/>
+  <rect x="90" y="70" width="332" height="380" rx="15" class="dark-gold"/>
+  <rect x="100" y="80" width="312" height="360" rx="10" class="gold"/>
+  
+  <!-- Star pattern -->
+  <g class="darker">
+    <polygon points="256,120 270,180 332,180 285,225 305,285 256,240 207,285 227,225 180,180 242,180"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="256" y="460" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#1a1a1a" text-anchor="middle">CRASH</text>
 </svg>

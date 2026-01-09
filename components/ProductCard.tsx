@@ -30,7 +30,7 @@ export default function ProductCard({product, currency='USD'}:{product:any, curr
       <article className={`${cardClass} rounded-xl shadow-lg p-4 flex flex-col hover:shadow-2xl transition-shadow`}>
         <div className="product-image h-44 rounded mb-4 overflow-hidden flex items-center justify-center bg-gray-200">
           {product.image ? (
-            <img src={product.image + '?v=' + Date.now()} alt={`${product.name} image`} className="w-full h-full object-cover" onError={(e) => {e.currentTarget.src = '/images/product-placeholder.svg'}} />
+            <img src={product.image + '?v=' + Date.now()} alt={`${product.name} image`} className="w-auto h-auto max-w-full max-h-full" onError={(e) => {e.currentTarget.src = '/images/product-placeholder.svg'}} />
           ) : (
             <img src="/images/product-placeholder.svg" alt={`${product.name} image`} className="w-full h-full object-cover" />
           )}

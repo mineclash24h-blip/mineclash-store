@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useCart } from '../context/CartContext'
+import { useCurrency } from '../context/CurrencyContext'
 
 export default function Cart(){
   const router = useRouter()
   const { items, remove, clear } = useCart()
-  const [currency, setCurrency] = useState('USD')
+  const { currency } = useCurrency()
 
   const total = items.reduce((s,i)=>{
     const price = currency === 'INR' ? (i.priceINR || 0) : (i.priceUSD || 0)
@@ -16,11 +16,7 @@ export default function Cart(){
     <main className="container mx-auto px-4">
       <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
       <div className="mb-4">
-        <label className="mr-2">Currency</label>
-        <select value={currency} onChange={(e)=>setCurrency(e.target.value)} className="border rounded px-2 py-1">
-          <option value="USD">USD</option>
-          <option value="INR">INR</option>
-        </select>
+        <label className="mr-2">Currency: <strong>{currency}</strong></label>
       </div>
 
       {items.length === 0 ? (

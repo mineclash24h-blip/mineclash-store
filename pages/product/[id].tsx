@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useCurrency } from '../context/CurrencyContext'
 
 export default function ProductPage(){
   const router = useRouter()
   const { id } = router.query
   const [product, setProduct] = useState<any>(null)
-  const [currency, setCurrency] = useState('USD')
+  const { currency } = useCurrency()
 
   useEffect(()=>{
     if(!id) return
@@ -26,11 +27,7 @@ export default function ProductPage(){
   return (
     <main className="container mx-auto px-4">
       <div className="flex justify-end mb-4">
-        <label className="mr-2 text-sm">Currency</label>
-        <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="border rounded px-2 py-1">
-          <option value="USD">USD</option>
-          <option value="INR">INR</option>
-        </select>
+        <label className="mr-2 text-sm">Currency: <strong>{currency}</strong></label>
       </div>
 
       <article className="grid md:grid-cols-2 gap-6">

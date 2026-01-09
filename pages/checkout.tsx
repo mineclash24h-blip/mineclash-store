@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useCart } from '../context/CartContext'
+import { useCurrency } from '../context/CurrencyContext'
 
 export default function Checkout(){
   const router = useRouter()
   const { items } = useCart()
 
-  const [currency, setCurrency] = useState('INR')
+  const { currency } = useCurrency()
   const [email, setEmail] = useState('')
   const [playerIGN, setPlayerIGN] = useState('')
   const [loading, setLoading] = useState(false)

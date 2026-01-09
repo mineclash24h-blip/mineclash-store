@@ -1,11 +1,10 @@
 import ProductCard from '../components/ProductCard'
 import { useEffect, useMemo, useState } from 'react'
-import { useCurrency } from '../context/CurrencyContext'
 
 export default function Shop(){
   const [ranks, setRanks] = useState<any[]>([])
   const [coins, setCoins] = useState<any[]>([])
-  const { currency } = useCurrency()
+  const [currency, setCurrency] = useState('USD')
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('all')
   const [sort, setSort] = useState('featured')
@@ -23,35 +22,19 @@ export default function Shop(){
     let out = ranks.slice()
     if(category !== 'all' && category !== 'ranks') return []
     if(query) out = out.filter(p=> p.name.toLowerCase().includes(query.toLowerCase()) || (p.description||'').toLowerCase().includes(query.toLowerCase()))
-    if(sort === 'price_asc') out.sort((a,b)=> {
-      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
-      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
-      return aPrice - bPrice
-    })
-    if(sort === 'price_desc') out.sort((a,b)=> {
-      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
-      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
-      return bPrice - aPrice
-    })
+    if(sort === 'price_asc') out.sort((a,b)=> (a.priceUSD||0)-(b.priceUSD||0))
+    if(sort === 'price_desc') out.sort((a,b)=> (b.priceUSD||0)-(a.priceUSD||0))
     return out
-  },[ranks, query, sort, currency])
+  },[ranks, query, sort])
 
   const filteredCoins = useMemo(()=>{
     let out = coins.slice()
     if(category !== 'all' && category !== 'coins') return []
     if(query) out = out.filter(p=> p.name.toLowerCase().includes(query.toLowerCase()) || (p.description||'').toLowerCase().includes(query.toLowerCase()))
-    if(sort === 'price_asc') out.sort((a,b)=> {
-      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
-      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
-      return aPrice - bPrice
-    })
-    if(sort === 'price_desc') out.sort((a,b)=> {
-      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
-      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
-      return bPrice - aPrice
-    })
+    if(sort === 'price_asc') out.sort((a,b)=> (a.priceUSD||0)-(b.priceUSD||0))
+    if(sort === 'price_desc') out.sort((a,b)=> (b.priceUSD||0)-(a.priceUSD||0))
     return out
-  },[coins, query, sort, currency])
+  },[coins, query, sort])
 
   return (
     <main>
@@ -72,6 +55,15 @@ export default function Shop(){
       </div>
 
       <section>
+            <option value="price_asc">Price: Low → High</option>
+            <option value="price_desc">Price: High → Low</option>
+          </select>
+          <select value={currency} onChange={(e)=>setCurrency(e.target.value)} className="border rounded px-2 py-1 bg-yellow-100">
+            <option value="USD">USD ($)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+      </div>
         <h3 className="text-2xl font-semibold mb-4">Ranks</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
           {filteredRanks.map(p=> <ProductCard key={p.id} product={p} currency={currency} />)}

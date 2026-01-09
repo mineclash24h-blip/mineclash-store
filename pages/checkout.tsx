@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useCart } from '../context/CartContext'
-import { useCurrency } from '../context/CurrencyContext'
 
 export default function Checkout(){
   const router = useRouter()
   const { items } = useCart()
 
-  const { currency } = useCurrency()
   const [email, setEmail] = useState('')
   const [playerIGN, setPlayerIGN] = useState('')
   const [loading, setLoading] = useState(false)
@@ -67,12 +65,6 @@ export default function Checkout(){
     <div className="max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-4">Checkout</h2>
       <div className="bg-white rounded shadow p-6">
-        <div className="mb-4">
-          <label className="block text-sm font-semibold mb-2">Currency</label>
-          <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="w-full border rounded px-3 py-2">
-            <option value="INR">INR (UPI)</option>
-          </select>
-        </div>
         <div className="mb-4">
           <label className="block text-sm font-semibold mb-2">Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full border rounded px-3 py-2" placeholder="you@example.com" />

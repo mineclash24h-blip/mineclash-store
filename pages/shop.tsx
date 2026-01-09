@@ -1,10 +1,11 @@
 import ProductCard from '../components/ProductCard'
 import { useEffect, useMemo, useState } from 'react'
+import { useCurrency } from '../context/CurrencyContext'
 
 export default function Shop(){
   const [ranks, setRanks] = useState<any[]>([])
   const [coins, setCoins] = useState<any[]>([])
-  const [currency, setCurrency] = useState('USD')
+  const { currency } = useCurrency()
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('all')
   const [sort, setSort] = useState('featured')

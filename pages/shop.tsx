@@ -23,19 +23,35 @@ export default function Shop(){
     let out = ranks.slice()
     if(category !== 'all' && category !== 'ranks') return []
     if(query) out = out.filter(p=> p.name.toLowerCase().includes(query.toLowerCase()) || (p.description||'').toLowerCase().includes(query.toLowerCase()))
-    if(sort === 'price_asc') out.sort((a,b)=> (a.priceUSD||0)-(b.priceUSD||0))
-    if(sort === 'price_desc') out.sort((a,b)=> (b.priceUSD||0)-(a.priceUSD||0))
+    if(sort === 'price_asc') out.sort((a,b)=> {
+      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
+      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
+      return aPrice - bPrice
+    })
+    if(sort === 'price_desc') out.sort((a,b)=> {
+      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
+      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
+      return bPrice - aPrice
+    })
     return out
-  },[ranks, query, sort])
+  },[ranks, query, sort, currency])
 
   const filteredCoins = useMemo(()=>{
     let out = coins.slice()
     if(category !== 'all' && category !== 'coins') return []
     if(query) out = out.filter(p=> p.name.toLowerCase().includes(query.toLowerCase()) || (p.description||'').toLowerCase().includes(query.toLowerCase()))
-    if(sort === 'price_asc') out.sort((a,b)=> (a.priceUSD||0)-(b.priceUSD||0))
-    if(sort === 'price_desc') out.sort((a,b)=> (b.priceUSD||0)-(a.priceUSD||0))
+    if(sort === 'price_asc') out.sort((a,b)=> {
+      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
+      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
+      return aPrice - bPrice
+    })
+    if(sort === 'price_desc') out.sort((a,b)=> {
+      const aPrice = currency === 'INR' ? (a.priceINR||0) : (a.priceUSD||0)
+      const bPrice = currency === 'INR' ? (b.priceINR||0) : (b.priceUSD||0)
+      return bPrice - aPrice
+    })
     return out
-  },[coins, query, sort])
+  },[coins, query, sort, currency])
 
   return (
     <main>

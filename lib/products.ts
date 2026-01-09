@@ -1,0 +1,18 @@
+export const ranks = [
+  { id: 6, name: 'CRASH+', category: 'ranks', priceUSD: 8.36, priceINR: 690, description: `Purchasing this rank grants you access to all of the features below:\n\nAccess to /sit\nAccess to /lay\nAccess to /smitingtable\nAccess to /stonecutter\nAccess to /enderchest\nAccess to /workbench\nAccess to /repair\nAccess to /anvil\nAccess to /hat\n\nCreate up to 12x Set Homes\nCreate up to 14 Auctions listing\nAccess up to 17 Vault\nAccess up to 20 Orders` },
+  { id: 7, name: 'CRASH', category: 'ranks', priceUSD: 5.21, priceINR: 430, description: `Purchasing this rank grants you access to all of the features below:\n\nAccess to /sit\nAccess to /lay\nAccess to /smitingtable\nAccess to /enderchest\nAccess to /stonecutter\nAccess to /anvil\nAccess to /hat\n\nCreate up to 9x Set Homes\nCreate up to 8 Auctions listing\nAccess up to 13 Vault\nAccess up to 15 Orders` },
+  { id: 8, name: 'EMPEROR', category: 'ranks', priceUSD: 14.54, priceINR: 1199, description: `Access to /sit\nAccess to /lay\nAccess to /smitingtable\nAccess to /stonecutter\nAccess to /enderchest\nAccess to /workbench\nAccess to /repair\nAccess to /anvil\nAccess to /hat\n\nCreate up to 12x Set Homes [/sethome]\nCreate up to 11 Auctions listing [/ah]\nAccess up to 15 Vault\nAccess up to 18 Orders` },
+  { id: 9, name: 'MONARCH', category: 'ranks', priceUSD: 8.47, priceINR: 699, description: `Access to /sit\nAccess to /lay\nAccess to /smitingtable\nAccess to /stonecutter\nAccess to /enderchest\nAccess to /workbench\nAccess to /anvil\nAccess to /hat\n\nCreate up to 8x Set Homes\nCreate up to 8 functions listing\nAccess up to 12 Vault\nAccess up to 14 Orders` },
+  { id: 10, name: 'VETERAN', category: 'ranks', priceUSD: 4.84, priceINR: 399, description: `Access to /sit\nAccess to /lay\nAccess to /smitingtable\nAccess to /enderchest\nAccess to /stonecutter\nAccess to /anvil\nAccess to /hat\n\nCreate up to 6x Set Homes\nCreate up to 5 Auctions listing\nAccess up to 8 Vault\nAccess up to 10 Orders` },
+  { id: 11, name: 'BARON', category: 'ranks', priceUSD: 2.41, priceINR: 199, description: `Access to /sit\nAccess to /lay\nAccess to /enderchest\nAccess to /anvil\nAccess to /hat\n\nCreate up to 4x Set Homes\nCreate up to 3 Auctions listing\nAccess up to 4 Vault\nAccess up to 6 Orders` },
+  { id: 18, name: 'CUSTOM RANK', category: 'ranks', priceUSD: 18.17, priceINR: 1499, description: 'Custom Ranks are special. You can get the rank made in the name of your choice!' },
+]
+
+export const coins = [
+  { id: 12, name: '1000 COINS', category: 'coins', priceUSD: 1.20, priceINR: 99, description: '1000 in-game coins', image: '/images/1000.jpeg' },
+  { id: 13, name: '2200 COINS', category: 'coins', priceUSD: 1.81, priceINR: 149, description: '2200 in-game coins', image: '/images/2200.jpeg' },
+  { id: 14, name: '6000 COINS', category: 'coins', priceUSD: 3.62, priceINR: 299, description: '6000 in-game coins', image: '/images/6000.jpeg' },
+  { id: 15, name: '9750 COINS', category: 'coins', priceUSD: 5.44, priceINR: 449, description: '9750 in-game coins', image: '/images/9750.jpeg' },
+  { id: 16, name: '14000 COINS', category: 'coins', priceUSD: 7.26, priceINR: 599, description: '14000 in-game coins', image: '/images/14000.jpeg' },
+  { id: 17, name: '37500 COINS', category: 'coins', priceUSD: 14.54, priceINR: 1199, description: '37500 in-game coins', image: '/images/37500.jpeg' },
+]

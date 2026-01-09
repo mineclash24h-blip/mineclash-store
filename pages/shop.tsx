@@ -50,20 +50,14 @@ export default function Shop(){
             <option value="price_asc">Price: Low → High</option>
             <option value="price_desc">Price: High → Low</option>
           </select>
-          
-        </div>
-      </div>
-
-      <section>
-            <option value="price_asc">Price: Low → High</option>
-            <option value="price_desc">Price: High → Low</option>
-          </select>
           <select value={currency} onChange={(e)=>setCurrency(e.target.value)} className="border rounded px-2 py-1 bg-yellow-100">
             <option value="USD">USD ($)</option>
             <option value="INR">INR (₹)</option>
           </select>
         </div>
       </div>
+
+      <section>
         <h3 className="text-2xl font-semibold mb-4">Ranks</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
           {filteredRanks.map(p=> <ProductCard key={p.id} product={p} currency={currency} />)}

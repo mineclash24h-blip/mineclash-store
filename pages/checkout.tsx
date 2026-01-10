@@ -9,6 +9,8 @@ export default function Checkout(){
   const [email, setEmail] = useState('')
   const [playerIGN, setPlayerIGN] = useState('')
   const [loading, setLoading] = useState(false)
+  const [coupon, setCoupon] = useState('')
+  const [discount, setDiscount] = useState(0)
 
   const handleCheckout = async () => {
     if(!playerIGN || playerIGN.trim().length < 2){
@@ -51,10 +53,20 @@ export default function Checkout(){
 
     // compute total in INR (use priceINR when available, otherwise convert USD -> INR)
     const usdToInr = 82.5
-    const totalINR = items.reduce((sum, it:any) => {
+    let totalINR = items.reduce((sum, it:any) => {
       const unit = typeof it.priceINR === 'number' ? it.priceINR : (typeof it.priceUSD === 'number' ? Math.round(it.priceUSD * usdToInr) : 0)
       return sum + unit * it.qty
     }, 0)
+
+    // Apply coupon discount
+    let appliedDiscount = 0;
+    if (coupon.trim().toLowerCase() === 'welcome24') {
+      appliedDiscount = Math.round(totalINR * 0.3);
+      totalINR = totalINR - appliedDiscount;
+      setDiscount(appliedDiscount);
+    } else {
+      setDiscount(0);
+    }
 
     // Redirect to UPI payment page with query params
     router.push(`/checkout/upi?ign=${encodeURIComponent(playerIGN)}&amountINR=${encodeURIComponent(String(totalINR))}&email=${encodeURIComponent(email)}`)
@@ -72,6 +84,13 @@ export default function Checkout(){
         <div className="mb-4">
           <label className="block text-sm font-semibold mb-2">Player IGN</label>
           <input type="text" value={playerIGN} onChange={(e) => setPlayerIGN(e.target.value)} className="w-full border rounded px-3 py-2" placeholder="PlayerInGameName" />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-semibold mb-2">Coupon Code</label>
+          <input type="text" value={coupon} onChange={(e) => setCoupon(e.target.value)} className="w-full border rounded px-3 py-2" placeholder="Enter coupon code" />
+          {discount > 0 && (
+            <p className="text-green-600 text-sm mt-2">Coupon applied! You save ₹{discount} ({Math.round((discount/(discount+totalINR))*100)}%).</p>
+          )}
         </div>
         <button 
           onClick={handleCheckout} 

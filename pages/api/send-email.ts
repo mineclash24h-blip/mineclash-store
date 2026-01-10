@@ -13,10 +13,10 @@ type EmailData = {
 
 // Configure your email service here
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // or your email service
+  service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER || 'mineclash24h@gmail.com',
-    pass: process.env.EMAIL_PASSWORD || 'MineClash55!'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
   }
 })
 
@@ -116,24 +116,25 @@ function generateEmailHTML(data: EmailData): string {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log("API /api/send-email called", req.body);
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
   try {
     const emailData: EmailData = req.body
-
+    console.log("Preparing to send email to:", emailData.to);
     // Send email
     await transporter.sendMail({
-      from: `MineClash Support <${process.env.EMAIL_USER || 'mineclash24h@gmail.com'}>`,
+      from: `MineClash Support <${process.env.EMAIL_USER}>`,
       to: emailData.to,
       subject: `MineClash Receipt - Order #${emailData.receiptId}`,
       html: generateEmailHTML(emailData)
     })
-
+    console.log("Email sent successfully to:", emailData.to);
     res.status(200).json({ success: true, message: 'Email sent successfully' })
   } catch (error) {
-    console.error('Email sending error:', error)
-    res.status(500).json({ error: 'Failed to send email' })
+    console.error('Email sending error:', error);
+    res.status(500).json({ error: 'Failed to send email', details: error instanceof Error ? error.message : error })
   }
 }

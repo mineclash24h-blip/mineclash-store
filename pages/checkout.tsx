@@ -27,7 +27,7 @@ export default function Checkout(){
     const purchases = raw ? JSON.parse(raw) : {}
     const existing = purchases[playerIGN] || { rank: null, coins: 0 }
 
-    const RANK_ORDER = ['BARON','VETERAN','MONARCH','EMPEROR','CRASH','CRASH+','CUSTOM RANK']
+    const RANK_ORDER = ['BARON','VETERAN','MONARCH','EMPEROR','CLASH','CLASH+','CUSTOM RANK']
     const rankIndex = (name:string|null) => name ? RANK_ORDER.indexOf(name.toUpperCase()) : -1
 
     if(ranksInCart.length === 1){

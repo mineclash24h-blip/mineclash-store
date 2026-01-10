@@ -41,7 +41,7 @@ export default function UpiPage(){
       const purchases = raw ? JSON.parse(raw) : {}
       const existing = purchases[ign] || { rank: null, coins: 0 }
       // rank order
-      const RANK_ORDER = ['BARON','VETERAN','MONARCH','EMPEROR','CRASH','CRASH+','CUSTOM RANK']
+      const RANK_ORDER = ['BARON','VETERAN','MONARCH','EMPEROR','CLASH','CLASH+','CUSTOM RANK']
       const rankIndex = (name:any) => name ? RANK_ORDER.indexOf(String(name).toUpperCase()) : -1
 
       let newRank = existing.rank

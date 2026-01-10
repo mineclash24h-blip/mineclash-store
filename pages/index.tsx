@@ -29,7 +29,7 @@ export default function Home(){
           <div className="flex flex-col items-center justify-center gap-8">
             <div className="w-full text-center text-white">
               <h1 className="text-5xl font-bold mb-4">MineClash Store</h1>
-              <p className="text-lg text-gray-100 mb-8">Shop ranks, crates and exclusive items for your Minecraft server.</p>
+              <p className="text-lg text-gray-100 mb-8">Shop ranks and coins by clicking the shop button below!</p>
               <Link href="/shop" className="inline-block px-10 py-4 bg-yellow-300 text-gray-900 rounded-2xl font-bold text-lg hover:bg-yellow-400 shadow-lg hover:shadow-xl transition-shadow">Shop Now</Link>
             </div>
           </div>
@@ -42,9 +42,9 @@ export default function Home(){
           <div className="flex flex-col items-center justify-center gap-8">
             <div className="w-full text-center text-white">
               <img src="/images/top%20logo.png" alt="Server Logo" className="mx-auto w-24 h-24 mb-6 rounded-full shadow-lg" />
-              <h1 className="text-5xl font-bold mb-4">Info Page</h1>
-              <p className="text-lg text-gray-100 mb-8">Learn more about the MineClash server, features, ranks, and community. Click below for detailed information and server highlights.</p>
-              <Link href="/info" className="inline-block px-10 py-4 bg-yellow-300 text-gray-900 rounded-2xl font-bold text-lg hover:bg-yellow-400 shadow-lg hover:shadow-xl transition-shadow">Go to Info Page</Link>
+              <h1 className="text-5xl font-bold mb-4">About Us</h1>
+              <p className="text-lg text-gray-100 mb-8">Learn more about the MineClash server, features, ranks, and community! Explore the page for live status of the leaderboards and more!</p>
+              <Link href="/info" className="inline-block px-10 py-4 bg-yellow-300 text-gray-900 rounded-2xl font-bold text-lg hover:bg-yellow-400 shadow-lg hover:shadow-xl transition-shadow">Learn More</Link>
             </div>
           </div>
         </div>

@@ -1,13 +1,14 @@
-import Maintenance from './maintenance'
-import { useEffect, useState } from 'react'
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { CartProvider } from '../context/CartContext'
-import { CurrencyProvider } from '../context/CurrencyContext'
+import Maintenance from './maintenance';
+import { useEffect, useState } from 'react';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { CartProvider } from '../context/CartContext';
+import { CurrencyProvider } from '../context/CurrencyContext';
 
+export default function App({ Component, pageProps }: AppProps) {
   const [bypass, setBypass] = useState(false);
 
   useEffect(() => {
@@ -32,5 +33,5 @@ import { CurrencyProvider } from '../context/CurrencyContext'
         </CartProvider>
       </CurrencyProvider>
     </div>
-  )
+  );
 }

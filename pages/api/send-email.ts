@@ -8,6 +8,7 @@ type EmailData = {
   items: Array<{ name: string; qty: number; priceINR: number }>
   receiptId: string
   timestamp: string
+  coupon?: string
 }
 
 // Configure your email service here
@@ -31,6 +32,8 @@ function generateEmailHTML(data: EmailData): string {
   `
     )
     .join('')
+
+  const couponHTML = data.coupon ? `<div style="margin: 16px 0; color: #059669; font-weight: bold;">${data.coupon}</div>` : '';
 
   return `
 <!DOCTYPE html>
@@ -89,6 +92,7 @@ function generateEmailHTML(data: EmailData): string {
       </tbody>
     </table>
 
+    ${couponHTML}
     <p style="color: #666; line-height: 1.6;">
       <strong>Status:</strong> <span class="status">✓ Payment Verified</span>
     </p>

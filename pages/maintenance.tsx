@@ -6,6 +6,7 @@ export default function Maintenance() {
       <h1 className="text-3xl font-bold mb-4">Site Under Maintenance</h1>
       <p className="text-lg mb-8">We are currently performing scheduled maintenance.<br />Please check back later.</p>
       <span className="text-sm text-gray-500">Thank you for your patience!</span>
+      <span className="text-sm text-gray-500">MineClash</span>
     </div>
   );
 }

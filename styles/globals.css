@@ -24,7 +24,7 @@ body {
 
 /* Product card tweaks */
 .product-image{
-  background: linear-gradient(180deg, #fef3c7, #dbeafe);
+  background-color: #f9fafb; /* Tailwind's bg-gray-50 */
 }
 
 .container{ 

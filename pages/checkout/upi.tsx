@@ -11,6 +11,7 @@ export default function UpiPage(){
   const [order, setOrder] = useState<any | null>(null)
   const [email, setEmail] = useState('')
   const [emailSending, setEmailSending] = useState(false)
+  const [coupon, setCoupon] = useState('')
 
   useEffect(()=>{
     if(!router.isReady) return
@@ -18,6 +19,7 @@ export default function UpiPage(){
     setIgn(String(q.ign || ''))
     setAmount(Number(q.amountINR || 0))
     setEmail(String(q.email || ''))
+    setCoupon(String(q.coupon || ''))
   },[router.isReady])
 
   const upiId = 'your-upi@bank' // replace with real UPI ID
@@ -83,7 +85,8 @@ export default function UpiPage(){
             priceINR: it.priceINR || 0
           })),
           receiptId: orderId,
-          timestamp: new Date(orderObj.createdAt).toLocaleString()
+          timestamp: new Date(orderObj.createdAt).toLocaleString(),
+          coupon: coupon ? `Coupon applied: ${coupon}` : ''
         }
         const res = await fetch('/api/send-email', {
           method: 'POST',
@@ -109,7 +112,8 @@ export default function UpiPage(){
 
   const handleCopy = async () => {
     if(!order) return
-    const text = `Order ${order.id}\nIGN: ${order.ign}\nAmount: ₹${order.amount}\nItems:\n` + (order.items || []).map((it:any)=>` - ${it.name} x${it.qty}`).join('\n')
+    let text = `Order ${order.id}\nIGN: ${order.ign}\nAmount: ₹${order.amount}\nItems:\n` + (order.items || []).map((it:any)=>` - ${it.name} x${it.qty}`).join('\n')
+    if (coupon) text += `\nCoupon applied: ${coupon}`;
     await navigator.clipboard.writeText(text)
     alert('Receipt copied to clipboard')
   }
@@ -118,6 +122,9 @@ export default function UpiPage(){
     <main className="container mx-auto px-4 max-w-lg">
       <h2 className="text-2xl font-bold mb-4">UPI Payment</h2>
       <div className="bg-white rounded shadow p-6">
+        {coupon && (
+          <div className="mb-2 text-green-700 font-semibold">Coupon applied: {coupon}</div>
+        )}
         <p className="mb-2">Player IGN: <strong>{ign}</strong></p>
         <p className="mb-4">Amount: <strong>₹{amount}</strong></p>
 

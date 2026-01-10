@@ -62,8 +62,8 @@ export default function Checkout(){
     setLoading(true)
 
     // compute total in INR (use priceINR when available, otherwise convert USD -> INR)
-    // Redirect to UPI payment page with query params
-    router.push(`/checkout/upi?ign=${encodeURIComponent(playerIGN)}&amountINR=${encodeURIComponent(String(totalINR))}&email=${encodeURIComponent(email)}`)
+    // Redirect to UPI payment page with query params, include coupon info
+    router.push(`/checkout/upi?ign=${encodeURIComponent(playerIGN)}&amountINR=${encodeURIComponent(String(totalINR))}&email=${encodeURIComponent(email)}${couponApplied ? `&coupon=Welcome24` : ''}`)
     setLoading(false)
   }
 

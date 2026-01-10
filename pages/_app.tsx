@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import Maintenance from './maintenance'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -17,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <CartProvider>
           <Header />
           <main className="flex-1 container mx-auto px-4 py-8">
-            <Component {...pageProps} />
+            <Maintenance />
           </main>
           <Footer />
         </CartProvider>

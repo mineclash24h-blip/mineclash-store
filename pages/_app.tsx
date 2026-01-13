@@ -26,9 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <CurrencyProvider>
         <CartProvider>
           <Header />
-          <main className="flex-1 container mx-auto px-4 py-8">
-            {bypass ? <Component {...pageProps} /> : <Maintenance />}
-          </main>
           <Footer />
         </CartProvider>
       </CurrencyProvider>

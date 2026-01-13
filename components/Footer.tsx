@@ -5,7 +5,6 @@ export default function Footer(){
         <div className="grid md:grid-cols-3 gap-8 mb-6">
           <div>
             <h3 className="font-bold mb-2">MineClash Store</h3>
-            <p className="text-sm text-gray-400">Your premier Minecraft server shop.</p>
           </div>
           <div>
             <h3 className="font-bold mb-2">Links</h3>
